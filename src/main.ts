@@ -4,4 +4,6 @@ import App from './App.vue'
 import 'normalize.css'
 // 公共样式
 import '@/assets/styles/common.less'
-createApp(App).mount('#app')
+// 路由
+import router from './router'
+createApp(App).use(router).mount('#app')
