@@ -3,7 +3,7 @@
   <AppHeader></AppHeader>
   <main class="app-body">
     <!-- 路由出口 -->
-
+    <RouterView></RouterView>
   </main>
   <AppFooter></AppFooter>
 </template>
