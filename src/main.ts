@@ -8,4 +8,6 @@ import '@/assets/styles/common.less'
 import router from './router'
 // Pinia 
 import { createPinia } from 'pinia'
-createApp(App).use(router).use(createPinia()).mount('#app')
+// 组件
+import XtxUI from './components'
+createApp(App).use(router).use(XtxUI).use(createPinia()).mount('#app')

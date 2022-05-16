@@ -1,15 +1,26 @@
-<!-- <script>
-export default {
-  name: 'HomeCategory',
-} -->
-<!-- </script> -->
-
 <template>
   <div class="home-category" @mouseleave="categoryId = ''">
     <ul class="menu">
       <li v-for="item in category.list" :key="item.id"  @mouseenter="categoryId = item.id" :class="{active:categoryId===item.id}">
         <RouterLink :to="`/category/${item.id}`">{{item.name}}</RouterLink>
+        <template v-if="item.children">
          <RouterLink :to="`/category/sub/${sub.id}`" v-for="sub in item.children?.slice(0, 2)" :key="sub.id">{{sub.name}}</RouterLink>
+        </template>
+        <template v-else>
+        <XtxSkeleton
+        :width="60"
+        :height="18"
+        style="margin-right: 5px"
+        bg="rgba(255,255,255,0.2)"
+        animated
+      />
+      <XtxSkeleton
+        :width="50"
+        :height="18"
+        bg="rgba(255,255,255,0.2)"
+        animated
+      />
+        </template>
       </li>
     </ul>
     <!-- 弹层 -->
