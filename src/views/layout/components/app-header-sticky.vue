@@ -2,7 +2,7 @@
 <!-- 当滚动大于导航栏高度的时候 显示该吸顶导航 -->
 <template>
   <div class="app-header-sticky" :class="{show:y>=100}">
-    <div class="container">
+    <div class="container" v-show="y>100">
       <RouterLink class="logo" to="/" />
       <AppHeaderNav />
       <div class="right">

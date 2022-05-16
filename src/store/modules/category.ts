@@ -19,20 +19,19 @@ export default defineStore('category', {
         item.open = false;
       })
       this.list=res.data.result
-      console.log( this.list);
     },
     // 控制导航栏的显示与隐藏
     show(id:string){
       const category=this.list.find((item) => item.id === id)
       category!.open=true
-      console.log("show");
       
     },
     hide(id: string) {
       const category = this.list.find((item) => item.id === id)
       category!.open = false
-      console.log("hide",category);
-
     },
+  },
+  getters :{
+    
   }
 })
