@@ -3,21 +3,14 @@
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 数据从Pinia中渲染,由于初始化list为空数组,即页面首次加载的时候会延迟 -->
-    <li v-for="(item) in category.list" :key="item.id">
+    <li v-for="(item) in category.list" :key="item.id" @mouseenter="category.show(item.id)"  @mouseleave="category.hide(item.id)">
       <!-- <a href="#">{{item.name}}</a> -->
-      <RouterLink :to="`/category/${item.id}`">{{item.name}}</RouterLink>
-      <div class="layer">
+      <RouterLink :to="`/category/${item.id}`" @click="category.hide(item.id)">{{item.name}}</RouterLink>
+      <div class="layer" :class="{ open: item.open }">
+      <!-- <div class="layer open" > -->
        <ul>
           <li v-for="i in item.children" :key="i.id">
-            <!-- <a href="#">
-              <img
-                :src="i.picture"
-                alt=""
-              />
-              <p>{{i.name}}</p>
-            </a> -->
-
-            <router-link :to="`/category/sub/${i.id}`">
+            <router-link :to="`/category/sub/${i.id}`" @click="category.hide(item.id)">
             <img
                 :src="i.picture"
                 alt=""
@@ -66,15 +59,16 @@ category.getAllCategory()
         color: @xtxColor;
         border-bottom: 1px solid @xtxColor;
       }
-      > .layer {
-        height: 132px;
-        opacity: 1;
-      }
+     
     }
   }
 }
-// 新增样式
-
+.layer {
+  &.open {
+    height: 132px;
+    opacity: 1;
+  }
+}
 .layer {
   width: 1240px;
   background-color: #fff;
