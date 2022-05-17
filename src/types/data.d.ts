@@ -21,3 +21,11 @@ export type CategoryItem = {
     goods: CategoryGoods[]
 }
 
+// 轮播图的数据
+
+export type BannerItem={
+    hrefUrl:string
+    id: string
+    imgUrl:string
+    type: string
+}
