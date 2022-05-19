@@ -1,5 +1,5 @@
 // 获取类型
-import { ApiRes,BannerItem,GoodItem,HotGoods } from "@/types/data";
+import { ApiRes,BannerItem,GoodItem,HotGoods,Brand } from "@/types/data";
 import  request  from "@/utils/request";
 import { defineStore } from "pinia";
 export default defineStore('home', {
@@ -8,6 +8,8 @@ export default defineStore('home', {
         newGoodList:[] as GoodItem[],
         // 热销商品
         hotGoodList:[] as HotGoods[],
+        // 品牌数据
+        brandList: [] as Brand[],
 
     }),
     actions : {
@@ -24,6 +26,12 @@ export default defineStore('home', {
         async getHotList() {
             const res = await request.get<ApiRes<HotGoods[]>>('/home/hot')
             this.hotGoodList = res.data.result
-          }
+          },
+        // 品牌数据
+        async getBrandList() {
+            const res = await request.get<ApiRes<Brand[]>>('/home/brand')
+            this.brandList = res.data.result
+          },
+        
     }
 })
