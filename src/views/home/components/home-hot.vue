@@ -1,6 +1,7 @@
 
 <template>
   <HomePanel title="人气推荐" sub-title="人气爆款 不容错过" ref="target" >
+  <Transition name="fade">
     <ul ref="pannel" class="goods-list" v-if="home.hotGoodList.length > 0">
       <li v-for="item in home.hotGoodList" :key="item.id">
         <RouterLink to="/">
@@ -22,6 +23,7 @@
         <XtxSkeleton bg="#e4e4e4" :width="120" :height="24" />
       </div>
     </div>
+    </Transition>
   </HomePanel>
 </template>
 <script lang="ts" setup>

@@ -3,6 +3,7 @@
   <div class="home-new">
     <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱" ref="target">
       <template #right><XtxMore path="/" /></template>
+      <Transition name="fade">
       <!-- 面板内容 -->
       <ul class="goods-list" v-if="home.newGoodList.length > 0">
         // ...
@@ -19,6 +20,7 @@
           <XtxSkeleton bg="#e4e4e4" :width="120" :height="24" />
         </div>
       </div>
+      </Transition>
     </HomePanel>
   </div>
 </template>
