@@ -1,7 +1,7 @@
 
 <template>
-  <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
-    <ul ref="pannel" class="goods-list">
+  <HomePanel title="人气推荐" sub-title="人气爆款 不容错过" ref="target" >
+    <ul ref="pannel" class="goods-list" v-if="home.hotGoodList.length > 0">
       <li v-for="item in home.hotGoodList" :key="item.id">
         <RouterLink to="/">
           <img :src="item.picture" alt="" />
@@ -10,6 +10,18 @@
         </RouterLink>
       </li>
     </ul>
+    <div class="home-skeleton" v-else>
+      <div
+        class="item"
+        v-for="i in 4"
+        :key="i"
+        :style="{ backgroundColor: '#f0f9f4' }"
+      >
+        <XtxSkeleton bg="#e4e4e4" :width="306" :height="306" />
+        <XtxSkeleton bg="#e4e4e4" :width="160" :height="24" />
+        <XtxSkeleton bg="#e4e4e4" :width="120" :height="24" />
+      </div>
+    </div>
   </HomePanel>
 </template>
 <script lang="ts" setup>
@@ -43,6 +55,19 @@ const target = useLazyData(() => {
     .desc {
       color: #999;
       font-size: 18px;
+    }
+  }
+}
+.home-skeleton {
+  width: 1240px;
+  height: 406px;
+  display: flex;
+  justify-content: space-between;
+  .item {
+    width: 306px;
+    .xtx-skeleton ~ .xtx-skeleton {
+      display: block;
+      margin: 16px auto 0;
     }
   }
 }
