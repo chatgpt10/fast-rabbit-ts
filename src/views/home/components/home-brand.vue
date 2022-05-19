@@ -3,11 +3,11 @@
 <template>
   <HomePanel title="热门品牌" sub-title="国际经典 品质保证">
     <template v-slot:right>
-      <a href="javascript:;" class="iconfont icon-angle-left prev"></a>
-      <a href="javascript:;" class="iconfont icon-angle-right next"></a>
+      <a href="javascript:;" class="iconfont icon-angle-left prev" :class="{disable:index===0}" @click="index=0"></a>
+      <a href="javascript:;" class="iconfont icon-angle-right next" :class="{disable:index===1}" @click="index=1"></a>
     </template>
     <div class="box" ref="box">
-      <ul class="list">
+      <ul class="list" :style="{ transform: `translateX(${-index * 1240}px)` }">
        <li v-for="item in home.brandList" :key="item.id">
       <RouterLink to="/">
         <img :src="item.picture" alt="">
@@ -18,10 +18,13 @@
   </HomePanel>
 </template>
 <script lang="ts" setup name="HomeBrand">
+import {ref} from 'vue'
 import HomePanel from './home-panel.vue'
 import useStore from '@/store';
 const {home} = useStore();
 home.getBrandList();
+// 右上角左右切换效果
+const index =ref(0)
 </script>
 <style scoped lang="less">
 .home-panel {
