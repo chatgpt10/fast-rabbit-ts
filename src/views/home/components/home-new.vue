@@ -1,7 +1,7 @@
 
 <template>
   <div class="home-new">
-    <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱">
+    <HomePanel title="新鲜好物" sub-title="新鲜出炉 品质靠谱" ref="target" >
       <template #right><XtxMore path="/" /></template>
       <!-- 面板内容 -->
       <ul class="goods-list">
@@ -22,8 +22,12 @@
 <script lang="ts" setup>
 import HomePanel from './home-panel.vue'
 import useStore from '@/store';
+// 图片拦懒加载
+import { useLazyData } from '@/utils/hooks'
 const {  home } = useStore();
-home.getNewList();
+const target = useLazyData(() => {
+  home.getNewList()
+})
 </script>
 <style scoped lang="less">
 .goods-list {

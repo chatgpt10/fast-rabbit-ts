@@ -17,8 +17,8 @@ export default defineStore('home', {
         },
         // 获取新的商品列表
         async getNewList(){
-            const res=await request.get<ApiRes<GoodItem[]>>('/home/new')
-            this.newGoodList = res.data.result   
+            const res=await request.get<ApiRes<GoodItem[]>>('/home/new')            
+            this.newGoodList = res.data.result               
         },
         // 热销商品
         async getHotList() {

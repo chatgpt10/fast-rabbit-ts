@@ -1,9 +1,4 @@
-<script lang="ts" setup>
-import useStore from '@/store'
-import HomePanel from './home-panel.vue'
-const { home } = useStore()
-home.getHotList()
-</script>
+
 <template>
   <HomePanel title="人气推荐" sub-title="人气爆款 不容错过">
     <ul ref="pannel" class="goods-list">
@@ -17,7 +12,16 @@ home.getHotList()
     </ul>
   </HomePanel>
 </template>
-
+<script lang="ts" setup>
+import useStore from '@/store'
+import HomePanel from './home-panel.vue'
+// 使用懒加载
+import { useLazyData } from '@/utils/hooks'
+const { home } = useStore()
+const target = useLazyData(() => {
+  home.getHotList()
+})
+</script>
 <style scoped lang="less">
 .goods-list {
   display: flex;
