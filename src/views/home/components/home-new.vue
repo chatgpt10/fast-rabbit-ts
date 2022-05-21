@@ -6,7 +6,13 @@
       <Transition name="fade">
       <!-- 面板内容 -->
       <ul class="goods-list" v-if="home.newGoodList.length > 0">
-        // ...
+        <li v-for="item in home.newGoodList" :key="item.id">
+            <RouterLink to="/">
+              <img :src="item.picture" alt="" />
+              <p class="name ellipsis">{{ item.name }}</p>
+              <p class="price">&yen;{{ item.price }}</p>
+            </RouterLink>
+          </li>
       </ul>
       <div class="home-skeleton" v-else>
         <div
