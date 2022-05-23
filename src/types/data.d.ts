@@ -97,3 +97,23 @@ export type TopCategory = {
     picture: string
     children: CategoryItem[]
   }
+// 面包屑
+  export type SubCategory = {
+    id: string
+    name: string
+    picture?: any
+    parentId: string
+    parentName: string
+    brands: {
+      id: string
+      name: string
+      nameEn: string
+      logo: string
+      picture: string
+      type?: any
+      desc: string
+      place: string
+    }[]
+    saleProperties: SaleProperty[]
+    goods: GoodItem[]
+  }

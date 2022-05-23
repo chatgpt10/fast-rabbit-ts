@@ -3,7 +3,7 @@
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 数据从Pinia中渲染,由于初始化list为空数组,即页面首次加载的时候会延迟 -->
-    <li v-for="(item) in category.list" :key="item.id" @mouseenter="category.show(item.id)"  @mouseleave="category.hide(item.id)">
+    <li v-for="(item) in category.list" :key="item.id" @mousemove="category.show(item.id)"  @mouseleave="category.hide(item.id)">
       <!-- <a href="#">{{item.name}}</a> -->
       <RouterLink :to="`/category/${item.id}`" @click="category.hide(item.id)">{{item.name}}</RouterLink>
       <div class="layer" :class="{ open: item.open }">

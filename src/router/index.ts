@@ -5,6 +5,13 @@ import Home from "@/views/home/index.vue"
 
 const router = createRouter({
     history:createWebHashHistory(),
+    // 路由跳转的时候定位到 顶部
+    scrollBehavior:() =>{
+        return {
+            top :0,
+        }
+
+    },
     routes:[
         {
             path:'/',
